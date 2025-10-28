@@ -15,12 +15,12 @@ jobs:
         uses: actions/checkout@v4
         # Fetch entire history needed for git diff and commit
         with:
-          fetch-depth: 0 
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11' 
+          python-version: '3.11'
 
       - name: Install Dependencies
         run: |
@@ -37,24 +37,41 @@ jobs:
           python run_forecast_openweather.py
           echo "Script finished."
 
+      # --- START DEBUGGING STEPS ---
+      - name: Check if forecast file exists
+        run: |
+          if [ -f forecasts.json ]; then
+            echo "✅ forecasts.json exists."
+            echo "--- File Content Preview (first 10 lines) ---"
+            head -n 10 forecasts.json
+            echo "---------------------------------------------"
+          else
+            echo "❌ ERROR: forecasts.json was NOT created by the script."
+            # Exit the workflow with an error if the file is missing
+            exit 1
+          fi
+
+      - name: Check Git Status
+        run: |
+           echo "--- Git Status Before Commit ---"
+           git status
+           echo "------------------------------"
+      # --- END DEBUGGING STEPS ---
 
       - name: Commit and Push Forecast Data
         run: |
-          echo "Checking for changes in forecast file..."
-          # Check if the file exists first
-          if [ ! -f forecasts.json ]; then
-            echo "forecasts.json not found. Exiting."
-            exit 1
-          fi
-          
+          echo "Configuring Git..."
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
-          # Use git diff --quiet to check for changes efficiently
-          if git diff --quiet forecasts.json; then
+
+          echo "Checking for changes in forecast file..."
+          # Use git status --porcelain to see if the file is modified or untracked
+          git_status=$(git status --porcelain forecasts.json)
+
+          if [ -z "$git_status" ]; then
             echo "No changes detected in forecasts.json."
           else
-            echo "Changes detected. Committing forecasts.json..."
+            echo "Changes detected ($git_status). Committing forecasts.json..."
             git add forecasts.json
             git commit -m "Update AQI forecast data"
             echo "Pushing changes..."
