@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bengaluru AQI Forecast</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .aqi-good { background-color: #dcfce7; color: #166534; border-color: #86efac; } /* Green 50 */
+        .aqi-satisfactory { background-color: #fefce8; color: #854d0e; border-color: #fef08a; } /* Yellow 50 */
+        .aqi-moderate { background-color: #fff7ed; color: #9a3412; border-color: #fdba74; } /* Orange 50 */
+        .aqi-poor { background-color: #fee2e2; color: #991b1b; border-color: #fca5a5; } /* Red 50 */
+        .aqi-very-poor { background-color: #f5d0fe; color: #701a75; border-color: #f0abfc; } /* Purple 50 */
+        .aqi-severe { background-color: #e5e7eb; color: #1f2937; border-color: #9ca3af; } /* Gray 300 */
+        .aqi-card { border-width: 1px; padding: 0.5rem 1rem; border-radius: 0.375rem; font-weight: 600; text-align: center; display: inline-block; min-width: 60px; }
+        .skeleton { animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; background-color: #e5e7eb; border-radius: 0.25rem; display: inline-block; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+    </style>
+</head>
+<body class="bg-gray-100 p-4 md:p-8 min-h-screen">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+        
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 p-6 text-white">
+            <h1 class="text-2xl md:text-3xl font-bold mb-2">Air Quality Index (AQI) Forecast</h1>
+            <p class="text-indigo-200 mb-1">Location: Peenya, Bengaluru (<span id="coords">Lat: --, Lon: --</span>)</p>
+            <p class="text-indigo-100 text-sm">Forecast generated: <span id="last-updated">Loading...</span></p>
+        </div>
+
+        <div class="p-6">
+            <!-- Current Conditions -->
+            <div class="mb-8 p-4 border border-gray-200 rounded-lg bg-gray-50">
+                <h2 class="text-xl font-semibold text-gray-800 mb-3">Current Conditions</h2>
+                <div class="flex items-center space-x-4">
+                     <div id="current-aqi-card" class="aqi-card skeleton w-24 h-10"></div>
+                     <div>
+                         <p class="text-gray-600 text-sm">Based on data from:</p>
+                         <p class="text-gray-800 font-medium" id="current-time">Loading...</p>
+                     </div>
+                </div>
+                <p class="text-xs text-gray-500 mt-2">*Instantaneous AQI calculated from current readings, may differ from official 24hr CPCB average.</p>
+            </div>
+
+            <!-- Hourly Forecast -->
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Next 24 Hours (Hourly Forecast)</h2>
+                <div id="hourly-forecast" class="overflow-x-auto pb-4">
+                     <div class="flex space-x-4 min-w-max">
+                        <!-- Skeleton Loader -->
+                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto"></div><div class="skeleton h-6 w-12 mx-auto"></div></div>
+                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto"></div><div class="skeleton h-6 w-12 mx-auto"></div></div>
+                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto"></div><div class="skeleton h-6 w-12 mx-auto"></div></div>
+                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto"></div><div class="skeleton h-6 w-12 mx-auto"></div></div>
+                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto"></div><div class="skeleton h-6 w-12 mx-auto"></div></div>
+                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto"></div><div class="skeleton h-6 w-12 mx-auto"></div></div>
+                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto"></div><div class="skeleton h-6 w-12 mx-auto"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Forecast -->
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Next 7 Days (Daily Average Forecast)</h2>
+                <div id="daily-forecast" class="space-y-3">
+                     <!-- Skeleton Loader -->
+                    <div class="flex justify-between items-center border rounded-lg p-3 bg-white shadow-sm"><div class="skeleton h-4 w-24"></div><div class="skeleton h-6 w-16"></div></div>
+                    <div class="flex justify-between items-center border rounded-lg p-3 bg-white shadow-sm"><div class="skeleton h-4 w-24"></div><div class="skeleton h-6 w-16"></div></div>
+                    <div class="flex justify-between items-center border rounded-lg p-3 bg-white shadow-sm"><div class="skeleton h-4 w-24"></div><div class="skeleton h-6 w-16"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Use the relative path to forecasts.json in the same repo
+        const FORECAST_URL = 'forecasts.json'; 
+
+        function getAqiClass(aqi) {
+            aqi = Math.round(aqi); // Round AQI for classification
+            if (aqi <= 50) return 'aqi-good';
+            if (aqi <= 100) return 'aqi-satisfactory';
+            if (aqi <= 200) return 'aqi-moderate';
+            if (aqi <= 300) return 'aqi-poor';
+            if (aqi <= 400) return 'aqi-very-poor';
+            return 'aqi-severe'; // 401+
+        }
+        
+        // --- Formatting Functions ---
+        function formatTime(isoString) {
+             try {
+                const date = new Date(isoString);
+                // Handle invalid date objects
+                if (isNaN(date)) return "Invalid Time"; 
+                return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
+            } catch (e) { return "Invalid Time"; }
+        }
+         function formatDate(dateString) {
+             try {
+                // Ensure correct parsing of YYYY-MM-DD
+                const parts = dateString.split('-');
+                if (parts.length !== 3) return "Invalid Date";
+                // Construct date as UTC to avoid timezone issues, then format locally
+                const date = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
+                 if (isNaN(date)) return "Invalid Date"; 
+                const options = { weekday: 'short', month: 'short', day: 'numeric' };
+                return date.toLocaleDateString(undefined, options);
+            } catch (e) { return "Invalid Date"; }
+        }
+          function formatDateTimeLocal(isoString) {
+             try {
+                const date = new Date(isoString);
+                 if (isNaN(date)) return "Invalid Date/Time"; 
+                return date.toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' });
+             } catch (e) { return "Invalid Date/Time"; }
+        }
+
+        async function loadForecast() {
+            const coordsEl = document.getElementById('coords');
+            const lastUpdatedEl = document.getElementById('last-updated');
+            const currentAqiCardEl = document.getElementById('current-aqi-card');
+            const currentTimeEl = document.getElementById('current-time');
+            const hourlyForecastEl = document.getElementById('hourly-forecast').querySelector('.flex'); // Target the inner flex container
+            const dailyForecastEl = document.getElementById('daily-forecast');
+
+            try {
+                // Add cache-busting for live updates
+                const response = await fetch(`${FORECAST_URL}?t=${new Date().getTime()}`);
+                if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
+                const data = await response.json();
+
+                // --- Populate Header ---
+                if (data.location_coords) {
+                     coordsEl.textContent = `Lat: ${data.location_coords.latitude?.toFixed(4) ?? '--'}, Lon: ${data.location_coords.longitude?.toFixed(4) ?? '--'}`;
+                 }
+                lastUpdatedEl.textContent = formatDateTimeLocal(data.forecast_generated_at_utc); // Use UTC time
+
+                 // --- Populate Current Conditions ---
+                 currentTimeEl.textContent = formatDateTimeLocal(data.current_conditions_time);
+                 const currentAqi = data.current_aqi ?? 0; // Default to 0 if missing
+                 currentAqiCardEl.textContent = `${Math.round(currentAqi)}`; // Display rounded AQI
+                 currentAqiCardEl.className = `aqi-card ${getAqiClass(currentAqi)}`; // Set color class
+
+
+                // --- Populate Hourly Forecast ---
+                hourlyForecastEl.innerHTML = ''; // Clear skeleton
+                if (data.hourly_forecast && data.hourly_forecast.length > 0) {
+                    data.hourly_forecast.forEach(item => {
+                        const aqiVal = item.aqi ?? 0;
+                        const div = document.createElement('div');
+                        div.className = 'border rounded-lg p-3 w-28 text-center bg-white shadow-sm flex-shrink-0'; // Added flex-shrink-0
+                        div.innerHTML = `
+                            <p class="text-sm font-medium text-gray-500 mb-1">${formatTime(item.time)}</p>
+                            <div class="aqi-card ${getAqiClass(aqiVal)}">${Math.round(aqiVal)}</div>
+                        `;
+                        hourlyForecastEl.appendChild(div);
+                    });
+                } else {
+                     hourlyForecastEl.innerHTML = '<p class="text-gray-500">No hourly forecast data available.</p>';
+                }
+
+
+                // --- Populate Daily Forecast ---
+                dailyForecastEl.innerHTML = ''; // Clear skeleton
+                 if (data.daily_forecast && data.daily_forecast.length > 0) {
+                    data.daily_forecast.forEach(item => {
+                        const aqiVal = item.avg_aqi ?? 0;
+                        const div = document.createElement('div');
+                        div.className = 'flex justify-between items-center border rounded-lg p-3 bg-white shadow-sm';
+                        div.innerHTML = `
+                            <p class="text-sm font-medium text-gray-700">${formatDate(item.date)}</p>
+                            <div class="aqi-card ${getAqiClass(aqiVal)}">${Math.round(aqiVal)}</div>
+                        `;
+                        dailyForecastEl.appendChild(div);
+                    });
+                 } else {
+                     dailyForecastEl.innerHTML = '<p class="text-gray-500">No daily forecast data available.</p>';
+                 }
+
+
+            } catch (error) {
+                console.error('Error loading forecast data:', error);
+                lastUpdatedEl.textContent = 'Error loading data.';
+                // Clear skeleton loaders on error and show error message
+                currentAqiCardEl.textContent = 'Err';
+                currentAqiCardEl.className = 'aqi-card bg-red-100 text-red-700 border-red-300';
+                currentTimeEl.textContent = 'N/A';
+                hourlyForecastEl.innerHTML = '<p class="text-red-600">Could not load hourly forecast.</p>';
+                dailyForecastEl.innerHTML = '<p class="text-red-600">Could not load daily forecast.</p>';
+            }
+        }
+
+        // Load data when the page loads
+        document.addEventListener('DOMContentLoaded', loadForecast);
+
+        // Optional: Refresh data periodically (e.g., every 15 minutes)
+        // setInterval(loadForecast, 15 * 60 * 1000); 
+    </script>
+
+</body>
+</html>
+
