@@ -1,63 +1,63 @@
 {
-  "forecast_generated_at_utc": "2025-10-29T22:12:15.392653+00:00",
-  "current_conditions_time": "2025-10-30T03:30:00",
-  "current_aqi": 48.02,
+  "forecast_generated_at_utc": "2025-10-29T23:12:15.335238+00:00",
+  "current_conditions_time": "2025-10-30T04:30:00",
+  "current_aqi": 46.58,
   "location_coords": {
     "latitude": 13.0270199,
     "longitude": 77.494094
   },
   "hourly_forecast": [
     {
-      "time": "2025-10-30T04:30:00",
+      "time": "2025-10-30T05:30:00",
       "hours_ahead": 1,
-      "aqi": 55.79
+      "aqi": 53.29
     },
     {
-      "time": "2025-10-30T05:30:00",
+      "time": "2025-10-30T06:30:00",
       "hours_ahead": 2,
       "aqi": 60.54
     },
     {
-      "time": "2025-10-30T06:30:00",
+      "time": "2025-10-30T07:30:00",
       "hours_ahead": 3,
-      "aqi": 62.7
+      "aqi": 63.33
     },
     {
-      "time": "2025-10-30T09:30:00",
+      "time": "2025-10-30T10:30:00",
       "hours_ahead": 6,
-      "aqi": 65.0
+      "aqi": 64.44
     },
     {
-      "time": "2025-10-30T15:30:00",
+      "time": "2025-10-30T16:30:00",
       "hours_ahead": 12,
-      "aqi": 46.62
+      "aqi": 45.9
     },
     {
-      "time": "2025-10-30T21:30:00",
+      "time": "2025-10-30T22:30:00",
       "hours_ahead": 18,
       "aqi": 45.91
     },
     {
-      "time": "2025-10-31T03:30:00",
+      "time": "2025-10-31T04:30:00",
       "hours_ahead": 24,
-      "aqi": 79.79
+      "aqi": 79.89
     }
   ],
   "daily_forecast": [
     {
       "date": "2025-10-31",
       "days_ahead": 1,
-      "avg_aqi": 58.57
+      "avg_aqi": 60.15
     },
     {
       "date": "2025-11-01",
       "days_ahead": 2,
-      "avg_aqi": 68.25
+      "avg_aqi": 68.63
     },
     {
       "date": "2025-11-02",
       "days_ahead": 3,
-      "avg_aqi": 64.93
+      "avg_aqi": 59.28
     },
     {
       "date": "2025-11-03",
@@ -72,7 +72,7 @@
     {
       "date": "2025-11-05",
       "days_ahead": 6,
-      "avg_aqi": 78.45
+      "avg_aqi": 76.89
     },
     {
       "date": "2025-11-06",
