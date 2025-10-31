@@ -25,7 +25,7 @@ OPENWEATHER_AQI_URL = "http://api.openweathermap.org/data/2.5/air_pollution"
 
 # --- !!! GET API KEY FROM GITHUB SECRETS !!! ---
 # GitHub Actions will inject the secret as an environment variable
-OPENWEATHER_API_KEY = os.environ.get("OPENWEATHER_API_KEY")
+OPENWEATHER_API_KEY = "efebb896d260930da5dcec0dfdd91765"
 
 # --- Feature List (CRITICAL - Must match training) ---
 FEATURES_LIST = [
@@ -57,7 +57,7 @@ def load_models():
         return None
 
 def fetch_current_weather_and_aqi():
-    """ Fetches current weather and current AQI pollutants."""
+    """ Fetches current weather (including visibility) and current AQI pollutants."""
     print("Fetching current weather and AQI...")
     current_data = {}
 
@@ -66,7 +66,8 @@ def fetch_current_weather_and_aqi():
         weather_params = {
             'latitude': LATITUDE,
             'longitude': LONGITUDE,
-            'current': 'temperature_2m,relative_humidity_2m,precipitation,pressure_msl,wind_speed_10m',
+            # ADDED 'visibility' to the request
+            'current': 'temperature_2m,relative_humidity_2m,precipitation,pressure_msl,wind_speed_10m,visibility',
             'timezone': 'auto'
         }
         r_weather = requests.get(WEATHER_API_URL, params=weather_params)
@@ -77,6 +78,7 @@ def fetch_current_weather_and_aqi():
         current_data['precipitation'] = weather.get('precipitation', 0)
         current_data['pressure'] = weather.get('pressure_msl', 0)
         current_data['wind_speed'] = weather.get('wind_speed_10m', 0)
+        current_data['visibility'] = weather.get('visibility', 0) # ADDED
         current_data['datetime'] = pd.to_datetime(weather.get('time'))
         print(f" -> Current weather fetched for {current_data['datetime']}.")
     except Exception as e:
@@ -156,10 +158,28 @@ def create_feature_vector(current_data):
     print("Engineering features from current data...")
     if current_data is None or 'datetime' not in current_data: return None
     pollutants = ['pm2_5', 'pm10', 'co', 'no2', 'o3', 'so2', 'nh3']
-    sub_indices = {p: calculate_indian_aqi_subindex(current_data.get(p, 0), p) for p in pollutants}
+    
+    # --- START: New logic for JSON output ---
+    sub_indices = {}
+    pollutant_details = {}
+    for p in pollutants:
+        raw_value = current_data.get(p, 0)
+        sub_index = calculate_indian_aqi_subindex(raw_value, p)
+        sub_indices[p] = sub_index
+        pollutant_details[p] = {'value': raw_value, 'sub_index': sub_index}
+    
     current_aqi = max(sub_indices.values()) if sub_indices else 0
+    primary_pollutant = max(sub_indices, key=sub_indices.get) if sub_indices else 'N/A'
+    
+    # Store new data for the JSON output
     current_data['calculated_aqi'] = current_aqi
+    current_data['primary_pollutant'] = primary_pollutant
+    current_data['pollutant_details'] = pollutant_details
+    # --- END: New logic for JSON output ---
+
     print(f" -> Calculated current AQI: {current_aqi:.2f}")
+    print(f" -> Primary Pollutant: {primary_pollutant}")
+    
     dt = current_data['datetime']
     # Ensure datetime object has time attributes
     if isinstance(dt, pd.Timestamp):
@@ -217,9 +237,33 @@ def format_predictions(hourly_preds, daily_preds, current_data):
     for i, d in enumerate(daily_targets):
          forecast_date = current_date + timedelta(days=d)
          daily_forecast.append({'date': forecast_date.strftime('%Y-%m-%d'), 'days_ahead': d, 'avg_aqi': round(daily_values[i], 2)})
+    
+    # --- START: Build new JSON structure ---
+    current_weather = {
+        'temperature': current_data.get('temperature', 0),
+        'humidity': current_data.get('humidity', 0),
+        'wind_speed': current_data.get('wind_speed', 0),
+        'visibility': current_data.get('visibility', 0),
+        'precipitation': current_data.get('precipitation', 0),
+        'pressure': current_data.get('pressure', 0)
+    }
+    
+    current_pollutants = current_data.get('pollutant_details', {})
+    
+    output_data = {
+        'forecast_generated_at_utc': now_utc.isoformat(), 
+        'current_conditions_time': current_ts.isoformat(), 
+        'current_aqi': round(current_data.get('calculated_aqi', 0), 2), 
+        'primary_pollutant': current_data.get('primary_pollutant', 'N/A'),
+        'location_coords': {'latitude': LATITUDE, 'longitude': LONGITUDE}, 
+        'current_weather': current_weather,
+        'current_pollutants': current_pollutants,
+        'hourly_forecast': hourly_forecast, 
+        'daily_forecast': daily_forecast
+    }
+    # --- END: Build new JSON structure ---
 
-
-    return {'forecast_generated_at_utc': now_utc.isoformat(), 'current_conditions_time': current_ts.isoformat(), 'current_aqi': round(current_data.get('calculated_aqi', 0), 2), 'location_coords': {'latitude': LATITUDE, 'longitude': LONGITUDE}, 'hourly_forecast': hourly_forecast, 'daily_forecast': daily_forecast}
+    return output_data
 
 # --- 3. Main Execution ---
 def main():
@@ -277,4 +321,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
