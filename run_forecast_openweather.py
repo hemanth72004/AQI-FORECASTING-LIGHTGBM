@@ -25,7 +25,7 @@ OPENWEATHER_AQI_URL = "http://api.openweathermap.org/data/2.5/air_pollution"
 
 # --- !!! GET API KEY FROM GITHUB SECRETS !!! ---
 # GitHub Actions will inject the secret as an environment variable
-OPENWEATHER_API_KEY = "efebb896d260930da5dcec0dfdd91765"
+OPENWEATHER_API_KEY = os.environ.get("OPENWEATHER_API_KEY")
 
 # --- Feature List (CRITICAL - Must match training) ---
 FEATURES_LIST = [
@@ -321,3 +321,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
