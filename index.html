@@ -41,6 +41,62 @@
                      </div>
                 </div>
                 <p class="text-xs text-gray-500 mt-2">*Instantaneous AQI calculated from current readings, may differ from official 24hr CPCB average.</p>
+
+                <!-- Health Advisory & Primary Pollutant -->
+                <div class="mt-4">
+                    <p id="health-advisory" class="text-lg font-medium text-gray-800 skeleton h-6 w-3/4 rounded"></p>
+                    <p class="text-sm text-gray-600 mt-1">Primary Pollutant: <span id="primary-pollutant" class="font-bold skeleton h-4 w-12 inline-block rounded">...</span></p>
+                </div>
+            </div>
+
+            <!-- Current Details Grid (Weather & Pollutants) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                
+                <!-- Weather Card -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Current Weather</h3>
+                    <div id="weather-card" class="p-4 border border-gray-200 rounded-lg bg-gray-50 space-y-2">
+                        <!-- Weather Skeletons -->
+                        <div class="flex justify-between"><span class="text-gray-600">Temperature:</span><span class="font-medium skeleton h-4 w-16 rounded"></span></div>
+                        <div class="flex justify-between"><span class="text-gray-600">Humidity:</span><span class="font-medium skeleton h-4 w-16 rounded"></span></div>
+                        <div class="flex justify-between"><span class="text-gray-600">Wind:</span><span class="font-medium skeleton h-4 w-16 rounded"></span></div>
+                        <div class="flex justify-between"><span class="text-gray-600">Visibility:</span><span class="font-medium skeleton h-4 w-16 rounded"></span></div>
+                    </div>
+                </div>
+
+                <!-- Pollutant Table -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Pollutant Breakdown</h3>
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pollutant</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Value (µg/m³)</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sub-Index</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pollutant-table-body" class="bg-white divide-y divide-gray-200">
+                                <!-- JS will populate this. Skeleton for 3 rows: -->
+                                <tr>
+                                    <td class="px-4 py-3"><span class="skeleton h-4 w-10 rounded"></span></td>
+                                    <td class="px-4 py-3"><span class="skeleton h-4 w-12 rounded"></span></td>
+                                    <td class="px-4 py-3"><span class="skeleton h-4 w-12 rounded"></span></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3"><span class="skeleton h-4 w-10 rounded"></span></td>
+                                    <td class="px-4 py-3"><span class="skeleton h-4 w-12 rounded"></span></td>
+                                    <td class="px-4 py-3"><span class="skeleton h-4 w-12 rounded"></span></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3"><span class="skeleton h-4 w-10 rounded"></span></td>
+                                    <td class="px-4 py-3"><span class="skeleton h-4 w-12 rounded"></span></td>
+                                    <td class="px-4 py-3"><span class="skeleton h-4 w-12 rounded"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
             <!-- Hourly Forecast -->
@@ -49,13 +105,13 @@
                 <div id="hourly-forecast" class="overflow-x-auto pb-4">
                      <div class="flex space-x-4 min-w-max">
                         <!-- Skeleton Loader -->
-                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto"></div><div class="skeleton h-6 w-12 mx-auto"></div></div>
-                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto"></div><div class="skeleton h-6 w-12 mx-auto"></div></div>
-                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto"></div><div class="skeleton h-6 w-12 mx-auto"></div></div>
-                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto"></div><div class="skeleton h-6 w-12 mx-auto"></div></div>
-                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto"></div><div class="skeleton h-6 w-12 mx-auto"></div></div>
-                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto"></div><div class="skeleton h-6 w-12 mx-auto"></div></div>
-                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto"></div><div class="skeleton h-6 w-12 mx-auto"></div></div>
+                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto rounded"></div><div class="skeleton h-6 w-12 mx-auto rounded"></div></div>
+                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto rounded"></div><div class="skeleton h-6 w-12 mx-auto rounded"></div></div>
+                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto rounded"></div><div class="skeleton h-6 w-12 mx-auto rounded"></div></div>
+                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto rounded"></div><div class="skeleton h-6 w-12 mx-auto rounded"></div></div>
+                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto rounded"></div><div class="skeleton h-6 w-12 mx-auto rounded"></div></div>
+                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto rounded"></div><div class="skeleton h-6 w-12 mx-auto rounded"></div></div>
+                        <div class="border rounded-lg p-3 w-28 text-center bg-white shadow-sm"><div class="skeleton h-4 w-16 mb-2 mx-auto rounded"></div><div class="skeleton h-6 w-12 mx-auto rounded"></div></div>
                     </div>
                 </div>
             </div>
@@ -65,16 +121,17 @@
                 <h2 class="text-xl font-semibold text-gray-800 mb-4">Next 7 Days (Daily Average Forecast)</h2>
                 <div id="daily-forecast" class="space-y-3">
                      <!-- Skeleton Loader -->
-                    <div class="flex justify-between items-center border rounded-lg p-3 bg-white shadow-sm"><div class="skeleton h-4 w-24"></div><div class="skeleton h-6 w-16"></div></div>
-                    <div class="flex justify-between items-center border rounded-lg p-3 bg-white shadow-sm"><div class="skeleton h-4 w-24"></div><div class="skeleton h-6 w-16"></div></div>
-                    <div class="flex justify-between items-center border rounded-lg p-3 bg-white shadow-sm"><div class="skeleton h-4 w-24"></div><div class="skeleton h-6 w-16"></div></div>
+                    <div class="flex justify-between items-center border rounded-lg p-3 bg-white shadow-sm"><div class="skeleton h-4 w-24 rounded"></div><div class="skeleton h-6 w-16 rounded"></div></div>
+                    <div class="flex justify-between items-center border rounded-lg p-3 bg-white shadow-sm"><div class="skeleton h-4 w-24 rounded"></div><div class="skeleton h-6 w-16 rounded"></div></div>
+                    <div class="flex justify-between items-center border rounded-lg p-3 bg-white shadow-sm"><div class="skeleton h-4 w-24 rounded"></div><div class="skeleton h-6 w-16 rounded"></div></div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Use the relative path to forecasts.json in the same repo
+        // This MUST be named forecasts.json and be in the same folder
+        // or on the web server root.
         const FORECAST_URL = 'forecasts.json'; 
 
         function getAqiClass(aqi) {
@@ -86,22 +143,31 @@
             if (aqi <= 400) return 'aqi-very-poor';
             return 'aqi-severe'; // 401+
         }
+
+        // Health Advisory Function
+        function getHealthAdvisory(aqi) {
+            aqi = Math.round(aqi);
+            // Based on Indian CPCB Categories
+            if (aqi <= 50) return { text: "Good: Air quality is satisfactory.", class: "text-green-700" };
+            if (aqi <= 100) return { text: "Satisfactory: Minor breathing discomfort possible.", class: "text-yellow-700" };
+            if (aqi <= 200) return { text: "Moderate: May cause breathing discomfort.", class: "text-orange-700" };
+            if (aqi <= 300) return { text: "Poor: May cause breathing discomfort on prolonged exposure.", class: "text-red-700" };
+            if (aqi <= 400) return { text: "Very Poor: Risk of respiratory illness.", class: "text-purple-700" };
+            return { text: "Severe: Affects healthy people and seriously impacts sick.", class: "text-gray-800" };
+        }
         
         // --- Formatting Functions ---
         function formatTime(isoString) {
              try {
                 const date = new Date(isoString);
-                // Handle invalid date objects
                 if (isNaN(date)) return "Invalid Time"; 
                 return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
             } catch (e) { return "Invalid Time"; }
         }
          function formatDate(dateString) {
              try {
-                // Ensure correct parsing of YYYY-MM-DD
                 const parts = dateString.split('-');
                 if (parts.length !== 3) return "Invalid Date";
-                // Construct date as UTC to avoid timezone issues, then format locally
                 const date = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
                  if (isNaN(date)) return "Invalid Date"; 
                 const options = { weekday: 'short', month: 'short', day: 'numeric' };
@@ -117,15 +183,20 @@
         }
 
         async function loadForecast() {
+            // Get all elements
             const coordsEl = document.getElementById('coords');
             const lastUpdatedEl = document.getElementById('last-updated');
             const currentAqiCardEl = document.getElementById('current-aqi-card');
             const currentTimeEl = document.getElementById('current-time');
-            const hourlyForecastEl = document.getElementById('hourly-forecast').querySelector('.flex'); // Target the inner flex container
+            const hourlyForecastEl = document.getElementById('hourly-forecast').querySelector('.flex');
             const dailyForecastEl = document.getElementById('daily-forecast');
+            const healthAdvisoryEl = document.getElementById('health-advisory');
+            const primaryPollutantEl = document.getElementById('primary-pollutant');
+            const weatherCardEl = document.getElementById('weather-card');
+            const pollutantTableBodyEl = document.getElementById('pollutant-table-body');
 
             try {
-                // Add cache-busting for live updates
+                // Add cache-busting to prevent browser from showing old data
                 const response = await fetch(`${FORECAST_URL}?t=${new Date().getTime()}`);
                 if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
                 const data = await response.json();
@@ -134,14 +205,58 @@
                 if (data.location_coords) {
                      coordsEl.textContent = `Lat: ${data.location_coords.latitude?.toFixed(4) ?? '--'}, Lon: ${data.location_coords.longitude?.toFixed(4) ?? '--'}`;
                  }
-                lastUpdatedEl.textContent = formatDateTimeLocal(data.forecast_generated_at_utc); // Use UTC time
+                lastUpdatedEl.textContent = formatDateTimeLocal(data.forecast_generated_at_utc);
 
                  // --- Populate Current Conditions ---
                  currentTimeEl.textContent = formatDateTimeLocal(data.current_conditions_time);
-                 const currentAqi = data.current_aqi ?? 0; // Default to 0 if missing
-                 currentAqiCardEl.textContent = `${Math.round(currentAqi)}`; // Display rounded AQI
-                 currentAqiCardEl.className = `aqi-card ${getAqiClass(currentAqi)}`; // Set color class
+                 const currentAqi = data.current_aqi ?? 0;
+                 currentAqiCardEl.textContent = `${Math.round(currentAqi)}`;
+                 currentAqiCardEl.className = `aqi-card ${getAqiClass(currentAqi)}`;
 
+                // --- Populate Health Advisory & Primary Pollutant ---
+                const advisory = getHealthAdvisory(currentAqi);
+                healthAdvisoryEl.textContent = advisory.text;
+                healthAdvisoryEl.className = `text-lg font-medium ${advisory.class}`; 
+                
+                primaryPollutantEl.textContent = data.primary_pollutant?.toUpperCase().replace('_', '.') ?? 'N/A';
+                primaryPollutantEl.className = "font-bold"; 
+
+                // --- Populate Weather Card ---
+                if (data.current_weather) {
+                    const weather = data.current_weather;
+                    const visibilityKm = (weather.visibility && weather.visibility > 0) ? (weather.visibility / 1000).toFixed(1) : '--';
+                    weatherCardEl.innerHTML = `
+                        <div class="flex justify-between"><span class="text-gray-600">Temperature:</span><span class="font-medium">${weather.temperature?.toFixed(1) ?? '--'} °C</span></div>
+                        <div class="flex justify-between"><span class="text-gray-600">Humidity:</span><span class="font-medium">${weather.humidity?.toFixed(0) ?? '--'} %</span></div>
+                        <div class="flex justify-between"><span class="text-gray-600">Wind:</span><span class="font-medium">${weather.wind_speed?.toFixed(1) ?? '--'} km/h</span></div>
+                        <div class="flex justify-between"><span class="text-gray-600">Visibility:</span><span class="font-medium">${visibilityKm} km</span></div>
+                    `;
+                } else {
+                     weatherCardEl.innerHTML = '<p class="text-gray-500">Weather data not available.</p>';
+                }
+
+                // --- Populate Pollutant Table ---
+                pollutantTableBodyEl.innerHTML = ''; // Clear skeleton
+                if (data.current_pollutants) {
+                    const pollutantOrder = ['pm2_5', 'pm10', 'o3', 'no2', 'so2', 'co', 'nh3'];
+                    
+                    pollutantOrder.forEach(pollutantKey => {
+                        const item = data.current_pollutants[pollutantKey];
+                        if (item) {
+                            const tr = document.createElement('tr');
+                            let pollutantName = pollutantKey.toUpperCase().replace('_', '.');
+                            
+                            tr.innerHTML = `
+                                <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-800">${pollutantName}</td>
+                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">${item.value?.toFixed(2) ?? '--'}</td>
+                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">${item.sub_index?.toFixed(1) ?? '--'}</td>
+                            `;
+                            pollutantTableBodyEl.appendChild(tr);
+                        }
+                    });
+                } else {
+                     pollutantTableBodyEl.innerHTML = '<tr><td colspan="3" class="px-4 py-3 text-center text-gray-500">Pollutant data not available.</td></tr>';
+                }
 
                 // --- Populate Hourly Forecast ---
                 hourlyForecastEl.innerHTML = ''; // Clear skeleton
@@ -149,7 +264,7 @@
                     data.hourly_forecast.forEach(item => {
                         const aqiVal = item.aqi ?? 0;
                         const div = document.createElement('div');
-                        div.className = 'border rounded-lg p-3 w-28 text-center bg-white shadow-sm flex-shrink-0'; // Added flex-shrink-0
+                        div.className = 'border rounded-lg p-3 w-28 text-center bg-white shadow-sm flex-shrink-0';
                         div.innerHTML = `
                             <p class="text-sm font-medium text-gray-500 mb-1">${formatTime(item.time)}</p>
                             <div class="aqi-card ${getAqiClass(aqiVal)}">${Math.round(aqiVal)}</div>
@@ -159,7 +274,6 @@
                 } else {
                      hourlyForecastEl.innerHTML = '<p class="text-gray-500">No hourly forecast data available.</p>';
                 }
-
 
                 // --- Populate Daily Forecast ---
                 dailyForecastEl.innerHTML = ''; // Clear skeleton
@@ -178,26 +292,25 @@
                      dailyForecastEl.innerHTML = '<p class="text-gray-500">No daily forecast data available.</p>';
                  }
 
-
             } catch (error) {
                 console.error('Error loading forecast data:', error);
                 lastUpdatedEl.textContent = 'Error loading data.';
-                // Clear skeleton loaders on error and show error message
                 currentAqiCardEl.textContent = 'Err';
                 currentAqiCardEl.className = 'aqi-card bg-red-100 text-red-700 border-red-300';
                 currentTimeEl.textContent = 'N/A';
                 hourlyForecastEl.innerHTML = '<p class="text-red-600">Could not load hourly forecast.</p>';
                 dailyForecastEl.innerHTML = '<p class="text-red-600">Could not load daily forecast.</p>';
+                healthAdvisoryEl.textContent = 'Error loading data.';
+                healthAdvisoryEl.className = 'text-lg font-medium text-red-700';
+                primaryPollutantEl.textContent = 'N/A';
+                primaryPollutantEl.className = 'font-bold';
+                weatherCardEl.innerHTML = '<p class="text-red-600">Could not load weather data.</p>';
+                pollutantTableBodyEl.innerHTML = '<tr><td colspan="3" class="px-4 py-3 text-center text-red-600">Could not load pollutant data.</td></tr>';
             }
         }
 
-        // Load data when the page loads
         document.addEventListener('DOMContentLoaded', loadForecast);
-
-        // Optional: Refresh data periodically (e.g., every 15 minutes)
-        // setInterval(loadForecast, 15 * 60 * 1000); 
     </script>
-
 </body>
 </html>
 
