@@ -1,6 +1,6 @@
 {
-  "forecast_generated_at_utc": "2025-11-22T03:34:02.106861+00:00",
-  "current_conditions_time": "2025-11-22T09:00:00",
+  "forecast_generated_at_utc": "2025-11-22T04:14:47.323536+00:00",
+  "current_conditions_time": "2025-11-22T09:30:00",
   "current_aqi": 44.08,
   "primary_pollutant": "o3",
   "location_coords": {
@@ -8,12 +8,12 @@
     "longitude": 77.494094
   },
   "current_weather": {
-    "temperature": 22.4,
-    "humidity": 82,
-    "wind_speed": 14.8,
+    "temperature": 23.0,
+    "humidity": 79,
+    "wind_speed": 15.3,
     "visibility": 24140.0,
     "precipitation": 0.0,
-    "pressure": 1017.1
+    "pressure": 1017.0
   },
   "current_pollutants": {
     "pm2_5": {
@@ -47,39 +47,39 @@
   },
   "hourly_forecast": [
     {
-      "time": "2025-11-22T10:00:00",
+      "time": "2025-11-22T10:30:00",
       "hours_ahead": 1,
-      "aqi": 43.77
+      "aqi": 43.64
     },
     {
-      "time": "2025-11-22T11:00:00",
+      "time": "2025-11-22T11:30:00",
       "hours_ahead": 2,
-      "aqi": 41.14
+      "aqi": 41.13
     },
     {
-      "time": "2025-11-22T12:00:00",
+      "time": "2025-11-22T12:30:00",
       "hours_ahead": 3,
-      "aqi": 40.22
+      "aqi": 39.76
     },
     {
-      "time": "2025-11-22T15:00:00",
+      "time": "2025-11-22T15:30:00",
       "hours_ahead": 6,
       "aqi": 41.08
     },
     {
-      "time": "2025-11-22T21:00:00",
+      "time": "2025-11-22T21:30:00",
       "hours_ahead": 12,
       "aqi": 40.79
     },
     {
-      "time": "2025-11-23T03:00:00",
+      "time": "2025-11-23T03:30:00",
       "hours_ahead": 18,
       "aqi": 45.66
     },
     {
-      "time": "2025-11-23T09:00:00",
+      "time": "2025-11-23T09:30:00",
       "hours_ahead": 24,
-      "aqi": 52.29
+      "aqi": 51.87
     }
   ],
   "daily_forecast": [
@@ -91,7 +91,7 @@
     {
       "date": "2025-11-24",
       "days_ahead": 2,
-      "avg_aqi": 52.89
+      "avg_aqi": 53.06
     },
     {
       "date": "2025-11-25",
