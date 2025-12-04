@@ -1,6 +1,6 @@
 {
-  "forecast_generated_at_utc": "2025-12-04T13:31:10.825989+00:00",
-  "current_conditions_time": "2025-12-04T19:00:00",
+  "forecast_generated_at_utc": "2025-12-04T14:14:42.261140+00:00",
+  "current_conditions_time": "2025-12-04T19:30:00",
   "current_aqi": 65.71,
   "primary_pollutant": "o3",
   "location_coords": {
@@ -8,12 +8,12 @@
     "longitude": 77.494094
   },
   "current_weather": {
-    "temperature": 21.4,
-    "humidity": 87,
-    "wind_speed": 6.7,
+    "temperature": 21.1,
+    "humidity": 88,
+    "wind_speed": 7.8,
     "visibility": 24140.0,
-    "precipitation": 0.2,
-    "pressure": 1015.7
+    "precipitation": 0.5,
+    "pressure": 1016.2
   },
   "current_pollutants": {
     "pm2_5": {
@@ -47,66 +47,66 @@
   },
   "hourly_forecast": [
     {
-      "time": "2025-12-04T20:00:00",
+      "time": "2025-12-04T20:30:00",
       "hours_ahead": 1,
       "aqi": 60.53
     },
     {
-      "time": "2025-12-04T21:00:00",
+      "time": "2025-12-04T21:30:00",
       "hours_ahead": 2,
       "aqi": 54.02
     },
     {
-      "time": "2025-12-04T22:00:00",
+      "time": "2025-12-04T22:30:00",
       "hours_ahead": 3,
       "aqi": 50.57
     },
     {
-      "time": "2025-12-05T01:00:00",
+      "time": "2025-12-05T01:30:00",
       "hours_ahead": 6,
-      "aqi": 56.31
+      "aqi": 55.75
     },
     {
-      "time": "2025-12-05T07:00:00",
+      "time": "2025-12-05T07:30:00",
       "hours_ahead": 12,
       "aqi": 73.66
     },
     {
-      "time": "2025-12-05T13:00:00",
+      "time": "2025-12-05T13:30:00",
       "hours_ahead": 18,
       "aqi": 55.41
     },
     {
-      "time": "2025-12-05T19:00:00",
+      "time": "2025-12-05T19:30:00",
       "hours_ahead": 24,
-      "aqi": 62.89
+      "aqi": 64.81
     }
   ],
   "daily_forecast": [
     {
       "date": "2025-12-05",
       "days_ahead": 1,
-      "avg_aqi": 56.65
+      "avg_aqi": 54.53
     },
     {
       "date": "2025-12-06",
       "days_ahead": 2,
-      "avg_aqi": 68.51
+      "avg_aqi": 66.21
     },
     {
       "date": "2025-12-07",
       "days_ahead": 3,
-      "avg_aqi": 63.09
+      "avg_aqi": 64.3
     },
     {
       "date": "2025-12-08",
       "days_ahead": 4,
-      "avg_aqi": 80.24
+      "avg_aqi": 80.84
     },
     {
       "date": "2025-12-09",
       "days_ahead": 5,
-      "avg_aqi": 70.66
+      "avg_aqi": 70.77
     },
     {
       "date": "2025-12-10",
@@ -116,7 +116,7 @@
     {
       "date": "2025-12-11",
       "days_ahead": 7,
-      "avg_aqi": 116.9
+      "avg_aqi": 116.26
     }
   ]
 }
