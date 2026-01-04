@@ -1,6 +1,6 @@
 {
-  "forecast_generated_at_utc": "2026-01-04T04:42:24.614881+00:00",
-  "current_conditions_time": "2026-01-04T10:00:00",
+  "forecast_generated_at_utc": "2026-01-04T05:19:57.590611+00:00",
+  "current_conditions_time": "2026-01-04T10:45:00",
   "current_aqi": 149.24,
   "primary_pollutant": "pm2_5",
   "location_coords": {
@@ -8,12 +8,12 @@
     "longitude": 77.494094
   },
   "current_weather": {
-    "temperature": 20.6,
-    "humidity": 63,
-    "wind_speed": 14.1,
+    "temperature": 22.4,
+    "humidity": 56,
+    "wind_speed": 15.4,
     "visibility": 24140.0,
     "precipitation": 0.0,
-    "pressure": 1018.7
+    "pressure": 1018.1
   },
   "current_pollutants": {
     "pm2_5": {
@@ -47,39 +47,39 @@
   },
   "hourly_forecast": [
     {
-      "time": "2026-01-04T11:00:00",
+      "time": "2026-01-04T11:45:00",
       "hours_ahead": 1,
-      "aqi": 148.66
+      "aqi": 149.6
     },
     {
-      "time": "2026-01-04T12:00:00",
+      "time": "2026-01-04T12:45:00",
       "hours_ahead": 2,
-      "aqi": 151.39
+      "aqi": 148.92
     },
     {
-      "time": "2026-01-04T13:00:00",
+      "time": "2026-01-04T13:45:00",
       "hours_ahead": 3,
       "aqi": 147.01
     },
     {
-      "time": "2026-01-04T16:00:00",
+      "time": "2026-01-04T16:45:00",
       "hours_ahead": 6,
-      "aqi": 136.32
+      "aqi": 132.96
     },
     {
-      "time": "2026-01-04T22:00:00",
+      "time": "2026-01-04T22:45:00",
       "hours_ahead": 12,
-      "aqi": 142.49
+      "aqi": 142.73
     },
     {
-      "time": "2026-01-05T04:00:00",
+      "time": "2026-01-05T04:45:00",
       "hours_ahead": 18,
-      "aqi": 138.44
+      "aqi": 139.01
     },
     {
-      "time": "2026-01-05T10:00:00",
+      "time": "2026-01-05T10:45:00",
       "hours_ahead": 24,
-      "aqi": 132.42
+      "aqi": 131.88
     }
   ],
   "daily_forecast": [
@@ -91,27 +91,27 @@
     {
       "date": "2026-01-06",
       "days_ahead": 2,
-      "avg_aqi": 151.62
+      "avg_aqi": 147.83
     },
     {
       "date": "2026-01-07",
       "days_ahead": 3,
-      "avg_aqi": 132.6
+      "avg_aqi": 129.73
     },
     {
       "date": "2026-01-08",
       "days_ahead": 4,
-      "avg_aqi": 125.48
+      "avg_aqi": 126.43
     },
     {
       "date": "2026-01-09",
       "days_ahead": 5,
-      "avg_aqi": 93.26
+      "avg_aqi": 95.12
     },
     {
       "date": "2026-01-10",
       "days_ahead": 6,
-      "avg_aqi": 86.44
+      "avg_aqi": 87.83
     },
     {
       "date": "2026-01-11",
