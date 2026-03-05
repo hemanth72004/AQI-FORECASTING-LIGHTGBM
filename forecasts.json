@@ -1,6 +1,6 @@
 {
-  "forecast_generated_at_utc": "2026-03-05T20:30:13.857395+00:00",
-  "current_conditions_time": "2026-03-06T02:00:00",
+  "forecast_generated_at_utc": "2026-03-05T21:26:43.394472+00:00",
+  "current_conditions_time": "2026-03-06T02:45:00",
   "current_aqi": 156.82,
   "primary_pollutant": "pm2_5",
   "location_coords": {
@@ -9,11 +9,11 @@
   },
   "current_weather": {
     "temperature": 19.9,
-    "humidity": 58,
-    "wind_speed": 3.5,
+    "humidity": 59,
+    "wind_speed": 3.3,
     "visibility": 24140.0,
     "precipitation": 0.0,
-    "pressure": 1011.2
+    "pressure": 1010.7
   },
   "current_pollutants": {
     "pm2_5": {
@@ -47,39 +47,39 @@
   },
   "hourly_forecast": [
     {
-      "time": "2026-03-06T03:00:00",
+      "time": "2026-03-06T03:45:00",
       "hours_ahead": 1,
       "aqi": 160.01
     },
     {
-      "time": "2026-03-06T04:00:00",
+      "time": "2026-03-06T04:45:00",
       "hours_ahead": 2,
       "aqi": 146.27
     },
     {
-      "time": "2026-03-06T05:00:00",
+      "time": "2026-03-06T05:45:00",
       "hours_ahead": 3,
-      "aqi": 160.61
+      "aqi": 160.3
     },
     {
-      "time": "2026-03-06T08:00:00",
+      "time": "2026-03-06T08:45:00",
       "hours_ahead": 6,
-      "aqi": 175.52
+      "aqi": 180.39
     },
     {
-      "time": "2026-03-06T14:00:00",
+      "time": "2026-03-06T14:45:00",
       "hours_ahead": 12,
       "aqi": 117.91
     },
     {
-      "time": "2026-03-06T20:00:00",
+      "time": "2026-03-06T20:45:00",
       "hours_ahead": 18,
       "aqi": 132.56
     },
     {
-      "time": "2026-03-07T02:00:00",
+      "time": "2026-03-07T02:45:00",
       "hours_ahead": 24,
-      "aqi": 120.61
+      "aqi": 114.05
     }
   ],
   "daily_forecast": [
@@ -91,7 +91,7 @@
     {
       "date": "2026-03-08",
       "days_ahead": 2,
-      "avg_aqi": 124.31
+      "avg_aqi": 123.94
     },
     {
       "date": "2026-03-09",
@@ -106,7 +106,7 @@
     {
       "date": "2026-03-11",
       "days_ahead": 5,
-      "avg_aqi": 124.46
+      "avg_aqi": 125.74
     },
     {
       "date": "2026-03-12",
