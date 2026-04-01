@@ -1,122 +1,122 @@
 {
-  "forecast_generated_at_utc": "2026-04-01T01:49:09.295956+00:00",
-  "current_conditions_time": "2026-04-01T07:15:00",
-  "current_aqi": 500,
-  "primary_pollutant": "pm2_5",
+  "forecast_generated_at_utc": "2026-04-01T06:22:28.155639+00:00",
+  "current_conditions_time": "2026-04-01T11:45:00",
+  "current_aqi": 105.79,
+  "primary_pollutant": "o3",
   "location_coords": {
     "latitude": 13.0270199,
     "longitude": 77.494094
   },
   "current_weather": {
-    "temperature": 20.8,
-    "humidity": 85,
-    "wind_speed": 3.8,
+    "temperature": 31.3,
+    "humidity": 35,
+    "wind_speed": 9.5,
     "visibility": 24140.0,
     "precipitation": 0.0,
-    "pressure": 1013.5
+    "pressure": 1011.6
   },
   "current_pollutants": {
     "pm2_5": {
-      "value": 30.9,
-      "sub_index": 500
+      "value": 26.44,
+      "sub_index": 44.06666666666667
     },
     "pm10": {
-      "value": 37.55,
-      "sub_index": 37.55
+      "value": 30.66,
+      "sub_index": 30.66
     },
     "co": {
-      "value": 337.37,
-      "sub_index": 16.8685
+      "value": 162.15,
+      "sub_index": 8.107500000000002
     },
     "no2": {
-      "value": 8.18,
-      "sub_index": 10.225
+      "value": 1.03,
+      "sub_index": 1.2875
     },
     "o3": {
-      "value": 57.12,
-      "sub_index": 57.12
+      "value": 104.24,
+      "sub_index": 105.78746268656715
     },
     "so2": {
-      "value": 5.27,
-      "sub_index": 6.5874999999999995
+      "value": 4.86,
+      "sub_index": 6.075
     },
     "nh3": {
-      "value": 7.11,
-      "sub_index": 1.7775
+      "value": 1.24,
+      "sub_index": 0.31
     }
   },
   "hourly_forecast": [
     {
-      "time": "2026-04-01T08:15:00",
+      "time": "2026-04-01T12:45:00",
       "hours_ahead": 1,
-      "aqi": 301.17
+      "aqi": 100.7
     },
     {
-      "time": "2026-04-01T09:15:00",
+      "time": "2026-04-01T13:45:00",
       "hours_ahead": 2,
-      "aqi": 229.63
+      "aqi": 92.94
     },
     {
-      "time": "2026-04-01T10:15:00",
+      "time": "2026-04-01T14:45:00",
       "hours_ahead": 3,
-      "aqi": 179.47
+      "aqi": 90.51
     },
     {
-      "time": "2026-04-01T13:15:00",
+      "time": "2026-04-01T17:45:00",
       "hours_ahead": 6,
-      "aqi": 92.29
+      "aqi": 79.47
     },
     {
-      "time": "2026-04-01T19:15:00",
+      "time": "2026-04-01T23:45:00",
       "hours_ahead": 12,
-      "aqi": 104.59
+      "aqi": 64.34
     },
     {
-      "time": "2026-04-02T01:15:00",
+      "time": "2026-04-02T05:45:00",
       "hours_ahead": 18,
-      "aqi": 124.84
+      "aqi": 96.9
     },
     {
-      "time": "2026-04-02T07:15:00",
+      "time": "2026-04-02T11:45:00",
       "hours_ahead": 24,
-      "aqi": 165.52
+      "aqi": 123.84
     }
   ],
   "daily_forecast": [
     {
       "date": "2026-04-02",
       "days_ahead": 1,
-      "avg_aqi": 112.61
+      "avg_aqi": 92.62
     },
     {
       "date": "2026-04-03",
       "days_ahead": 2,
-      "avg_aqi": 82.15
+      "avg_aqi": 85.01
     },
     {
       "date": "2026-04-04",
       "days_ahead": 3,
-      "avg_aqi": 61.23
+      "avg_aqi": 84.89
     },
     {
       "date": "2026-04-05",
       "days_ahead": 4,
-      "avg_aqi": 74.1
+      "avg_aqi": 74.27
     },
     {
       "date": "2026-04-06",
       "days_ahead": 5,
-      "avg_aqi": 92.55
+      "avg_aqi": 91.26
     },
     {
       "date": "2026-04-07",
       "days_ahead": 6,
-      "avg_aqi": 120.65
+      "avg_aqi": 78.17
     },
     {
       "date": "2026-04-08",
       "days_ahead": 7,
-      "avg_aqi": 103.84
+      "avg_aqi": 83.08
     }
   ]
 }
