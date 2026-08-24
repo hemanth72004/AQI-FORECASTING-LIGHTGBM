@@ -1,6 +1,6 @@
 {
-  "forecast_generated_at_utc": "2026-08-24T09:37:12.280291+00:00",
-  "current_conditions_time": "2026-08-24T15:00:00",
+  "forecast_generated_at_utc": "2026-08-24T10:28:39.719786+00:00",
+  "current_conditions_time": "2026-08-24T15:45:00",
   "current_aqi": 27.08,
   "primary_pollutant": "o3",
   "location_coords": {
@@ -9,11 +9,11 @@
   },
   "current_weather": {
     "temperature": 26.1,
-    "humidity": 75,
-    "wind_speed": 18.3,
-    "visibility": 10120.0,
-    "precipitation": 0.1,
-    "pressure": 1009.5
+    "humidity": 74,
+    "wind_speed": 19.6,
+    "visibility": 10320.0,
+    "precipitation": 0.2,
+    "pressure": 1008.9
   },
   "current_pollutants": {
     "pm2_5": {
@@ -47,37 +47,37 @@
   },
   "hourly_forecast": [
     {
-      "time": "2026-08-24T16:00:00",
+      "time": "2026-08-24T16:45:00",
       "hours_ahead": 1,
       "aqi": 26.26
     },
     {
-      "time": "2026-08-24T17:00:00",
+      "time": "2026-08-24T17:45:00",
       "hours_ahead": 2,
       "aqi": 24.92
     },
     {
-      "time": "2026-08-24T18:00:00",
+      "time": "2026-08-24T18:45:00",
       "hours_ahead": 3,
       "aqi": 23.34
     },
     {
-      "time": "2026-08-24T21:00:00",
+      "time": "2026-08-24T21:45:00",
       "hours_ahead": 6,
-      "aqi": 22.41
+      "aqi": 22.05
     },
     {
-      "time": "2026-08-25T03:00:00",
+      "time": "2026-08-25T03:45:00",
       "hours_ahead": 12,
-      "aqi": 21.42
+      "aqi": 21.63
     },
     {
-      "time": "2026-08-25T09:00:00",
+      "time": "2026-08-25T09:45:00",
       "hours_ahead": 18,
       "aqi": 36.05
     },
     {
-      "time": "2026-08-25T15:00:00",
+      "time": "2026-08-25T15:45:00",
       "hours_ahead": 24,
       "aqi": 24.38
     }
