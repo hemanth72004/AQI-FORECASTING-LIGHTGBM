@@ -1,6 +1,6 @@
 {
-  "forecast_generated_at_utc": "2026-08-26T09:31:43.829126+00:00",
-  "current_conditions_time": "2026-08-26T15:00:00",
+  "forecast_generated_at_utc": "2026-08-26T10:25:20.590276+00:00",
+  "current_conditions_time": "2026-08-26T15:45:00",
   "current_aqi": 44.29,
   "primary_pollutant": "o3",
   "location_coords": {
@@ -8,12 +8,12 @@
     "longitude": 77.494094
   },
   "current_weather": {
-    "temperature": 27.6,
-    "humidity": 62,
-    "wind_speed": 18.0,
-    "visibility": 7900.0,
-    "precipitation": 0.2,
-    "pressure": 1009.3
+    "temperature": 26.4,
+    "humidity": 69,
+    "wind_speed": 15.8,
+    "visibility": 8900.0,
+    "precipitation": 0.1,
+    "pressure": 1009.4
   },
   "current_pollutants": {
     "pm2_5": {
@@ -47,39 +47,39 @@
   },
   "hourly_forecast": [
     {
-      "time": "2026-08-26T16:00:00",
+      "time": "2026-08-26T16:45:00",
       "hours_ahead": 1,
-      "aqi": 41.92
+      "aqi": 41.66
     },
     {
-      "time": "2026-08-26T17:00:00",
+      "time": "2026-08-26T17:45:00",
       "hours_ahead": 2,
       "aqi": 39.34
     },
     {
-      "time": "2026-08-26T18:00:00",
+      "time": "2026-08-26T18:45:00",
       "hours_ahead": 3,
       "aqi": 37.41
     },
     {
-      "time": "2026-08-26T21:00:00",
+      "time": "2026-08-26T21:45:00",
       "hours_ahead": 6,
-      "aqi": 30.93
+      "aqi": 31.28
     },
     {
-      "time": "2026-08-27T03:00:00",
+      "time": "2026-08-27T03:45:00",
       "hours_ahead": 12,
-      "aqi": 26.54
+      "aqi": 27.21
     },
     {
-      "time": "2026-08-27T09:00:00",
+      "time": "2026-08-27T09:45:00",
       "hours_ahead": 18,
-      "aqi": 45.54
+      "aqi": 42.71
     },
     {
-      "time": "2026-08-27T15:00:00",
+      "time": "2026-08-27T15:45:00",
       "hours_ahead": 24,
-      "aqi": 41.05
+      "aqi": 40.94
     }
   ],
   "daily_forecast": [
@@ -96,7 +96,7 @@
     {
       "date": "2026-08-29",
       "days_ahead": 3,
-      "avg_aqi": 30.87
+      "avg_aqi": 30.2
     },
     {
       "date": "2026-08-30",
@@ -106,12 +106,12 @@
     {
       "date": "2026-08-31",
       "days_ahead": 5,
-      "avg_aqi": 29.08
+      "avg_aqi": 29.0
     },
     {
       "date": "2026-09-01",
       "days_ahead": 6,
-      "avg_aqi": 30.62
+      "avg_aqi": 30.31
     },
     {
       "date": "2026-09-02",
